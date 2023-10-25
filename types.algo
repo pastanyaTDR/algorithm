@@ -1,0 +1,37 @@
+VAR
+   sentence : STRING;
+   length : INTEGER := 0;
+   wordCount : INTEGER := 0;
+   vowelCount : INTEGER := 0;
+   i : INTEGER := 1;
+BEGIN
+   
+   sentence := "This is a sample sentence.";
+   WHILE i <= LENGTH(sentence) DO
+       
+       c := SUBSTRING(sentence, i, 1);
+       
+      
+       length := length + 1;
+       
+       IF c ≠ ' ' THEN
+       
+           IF i = 1 OR SUBSTRING(sentence, i - 1, 1) = ' ' THEN
+               wordCount := wordCount + 1;
+           END_IF
+           SELECT c
+               CASE 'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U':
+                   vowelCount := vowelCount + 1;
+           END_SELECT
+       END_IF
+       
+
+       i := i + 1;
+   END_WHILE
+
+
+   OUTPUT "Length of the sentence:", length;
+   OUTPUT "Number of words in the sentence:", wordCount;
+   OUTPUT "Number of vowels in the sentence:", vowelCount;      ²
+END
+l 

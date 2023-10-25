@@ -1,0 +1,18 @@
+PROCEDURE SumOfDistinctElements(set1, set2)
+    VAR sum := 0;
+    FOR EACH element IN set1 DO
+        IF NOT Contains(set2, element) THEN
+            sum := sum + element;
+        END_IF
+    END_FOR
+    FOR EACH element IN set2 DO
+        IF NOT Contains(set1, element) THEN
+            sum := sum + element;
+        END_IF
+    END_FOR
+    Write(sum);
+END
+
+VAR set1 := [3, 1, 7, 9];
+VAR set2 := [2, 4, 1, 9, 3];
+SumOfDistinctElements(set1, set2);

@@ -1,0 +1,27 @@
+FUNCTION DotProduct(v1, v2)
+    VAR ps := 0;
+    FOR i FROM 1 TO Size(v1) DO
+        ps := ps + (v1[i] * v2[i]);
+    END_FOR
+    RETURN ps;
+END_FUNCTION
+
+FUNCTION AreVectorsOrthogonal(v1, v2)
+    VAR dotProduct := DotProduct(v1, v2);
+    IF dotProduct = 0 THEN
+        RETURN TRUE;  // Vectors are orthogonal
+    ELSE
+        RETURN FALSE; // Vectors are not orthogonal
+    END_IF
+END_FUNCTION
+
+VAR vectors := [[1, 0], [0, 1], [2, 2]];
+FOR i FROM 1 TO Size(vectors) - 1 DO
+    FOR j FROM i + 1 TO Size(vectors) DO
+        IF AreVectorsOrthogonal(vectors[i], vectors[j]) THEN
+            Write("Vectors ", i, " and ", j, " are orthogonal.");
+        ELSE
+            Write("Vectors ", i, " and ", j, " are not orthogonal.");
+        END_IF
+    END_FOR
+END_FOR
